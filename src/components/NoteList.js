@@ -6,18 +6,21 @@ import { NoteAdd } from "./NoteAdd";
 const storageKey = "DevMeetings.ReactNative.App.Notes";
 
 const createNextNote = (() => {
-  let key = 0;
+  let index = 0;
 
   return text => {
+    const key = `${Date.now()}-${index}`;
+    index++;
+
     if (text === undefined) {
       text = `This is default note #${key}`;
     }
 
     return {
-      key: `${key++}`,
+      key,
       text
     };
-  };
+  }
 })();
 
 export class NoteList extends React.Component {
@@ -79,7 +82,7 @@ export class NoteList extends React.Component {
 }
 
 function getDefaultNotes() {
-  return Array.from({ length: 50 }, createNextNote);
+  return Array.from({ length: 30 }, createNextNote);
 }
 
 function deserializeNotes(notes) {
