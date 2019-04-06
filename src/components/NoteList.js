@@ -31,7 +31,6 @@ export class NoteList extends React.Component {
   // noinspection JSCheckFunctionSignatures - async is ok
   async componentDidMount() {
     const rawNotes = await AsyncStorage.getItem(storageKey);
-    console.log({ rawNotes });
     const notes = rawNotes === null
       ? getDefaultNotes()
       : deserializeNotes(rawNotes);
@@ -64,7 +63,6 @@ export class NoteList extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        {console.log(this.state.notes)}
         <FlatList
           data={this.state.notes}
           renderItem={({ item }) => <Note text={item.text}/>}
@@ -90,7 +88,6 @@ function deserializeNotes(notes) {
 }
 
 function serializeNotes(notes) {
-  console.log(notes);
   if (Array.isArray(notes) && notes.length === 0) {
     return null;
   }
