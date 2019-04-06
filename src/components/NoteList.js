@@ -1,3 +1,4 @@
+// TODO: https://slides.com/czystyl/rn-dev-meetings#/7/2
 import React from "react";
 import { AsyncStorage, Button, FlatList, View } from "react-native";
 import { Note } from "./Note";
